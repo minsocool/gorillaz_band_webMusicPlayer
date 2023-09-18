@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/4-gorillaz-band-special-design-logo-birch-twigley.jpg"
+        type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Gorillaz Album Play</title>
+
+</head>
+
+<body>
+    <div class="player">
+        <!-- Dashboard -->
+        <div class="dashboard">
+            <header>
+                <h4>
+                    Now Playing
+                </h4>
+                <h2>
+                    Feel Good Inc.
+                </h2>
+            </header>
+
+            <!-- CD -->
+            <div class="cd">
+                <div class="cd-thumbnail" style="background-image: url(./assets/img/test.png)"">
+
+                </div>
+            </div>
+            <!-- Control -->
+            <div class=" control">
+                    <div class="btn btn-random ">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <div class="btn btn-prev">
+                        <i class="fas fa-step-backward"></i>
+                    </div>
+                    <div class="btn btn-toggle-play">
+                        <i class="fas fa-pause icon-pause"></i>
+                        <i class="fas fa-play icon-play"></i>
+                    </div>
+                    <div class="btn btn-next">
+                        <i class="fas fa-step-forward"></i>
+                    </div>
+                    <div class="btn btn-repeat">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                </div>
+                <input id="progress" class="range-progress" type="range" name="range" value="0" step="1" min="0"
+                    max="100"> <!--  Từng bước input là 1%  -->
+                <div class="musicPlayback__time">
+                    <div class="timeCurrent">00:00</div>
+                    <div class="timeEnd">End</div>
+                </div>
+                <div class="edit-volume">
+                    <div class="volume-off">
+                        <i class="fas fa-volume-off"></i>
+                    </div>
+                    <input type="range" class="range-volume" name="range" value="70" step="1" min="0" max="100">
+                    <div class="volume-high">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                </div>
+                <audio id="audio" src=""></audio>
+
+
+            </div>
+            <!-- Playlist -->
+            <div class="playlist">
+                <!-- <div class="song">
+                    <div class="thumb" style="background-image: url('./assets/img/FileFlies.png')">
+                    </div>
+                    <div class="body">
+                        <h3 class="title">Music name</h3>
+                        <p class="author">Singer</p>
+                    </div>
+                    <div class="option">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div> -->
+            </div>
+            <div class="footer">
+                <h1>
+                    Edited by
+                    <a target="_blank" href="https://github.com/minsocool">Hoang Minh</a>
+                </h1>
+
+            </div>
+
+        </div>
+</body>
+<script src="./main.js"></script>
+
+</html>
