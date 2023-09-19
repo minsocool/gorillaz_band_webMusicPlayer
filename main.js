@@ -6,6 +6,7 @@ const PLAYER_STORAGE_KEY = "Myung-Player-Storage";
 const playLists = $(".playlist");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
+const titleSong = $("header h2");
 
 const app = {
   currentIndex: 0,
@@ -78,6 +79,59 @@ const app = {
     },
   ],
 
+  // Show toast function
+  toast: function ({
+    title = "",
+    message = "",
+    type = "",
+    storageView = "",
+    duration = 3000,
+  }) {
+    const mainToast = document.getElementById("toast");
+    if (mainToast) {
+      const toast = document.createElement("div");
+      const icons = {
+        bookmark: "fa-solid fa-bookmark",
+        lyrics: "fa-solid fa-microphone",
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+
+      toast.classList.add("toast", `toast--${type}`);
+      toast.style.animation = `slideInLeft ease 0.7s, fadeOut linear 1s ${delay}s forwards`;
+      toast.innerHTML = `
+      <div class="toast__icon">
+        <i class="${icon}"></i>
+      </div>
+      <div class="toast_body">
+        <h3 class="toast_title">
+          ${title}
+        </h3>
+        <p class="toast_msg">${message}<a style="color:white; font-weight: 700;">
+          ${storageView}
+        </a>
+      </p>
+     </div>
+      <div class="toast__close">
+      <i class="fa-solid fa-circle-xmark"></i>
+      </div>
+      `;
+      toast.onclick = function (e) {
+        if (e.target.closest(".toast__close")) {
+          // selector toast__close
+          mainToast.removeChild(toast); // xoa di toast message
+          clearTimeout(autoRemoveID); // clear timeout for dom
+        }
+      };
+      // Add div con
+      mainToast.appendChild(toast);
+
+      // Sau khoang thoi gian xoa div con
+      const autoRemoveID = setTimeout(function () {
+        mainToast.removeChild(toast);
+      }, duration + 1000); // plus 1000 for fadeout 1s to synchronize
+    }
+  },
   render: function () {
     const htmls = this.songs.map((song, index) => {
       return `<div class="song ${
@@ -145,6 +199,8 @@ const app = {
       // console.log(newCdWidth / cdWidth)
     };
     // PLAY / PAUSE MUSIC
+    const bookMarkBtn = $(".btn-bookmark");
+    const lyricBtn = $(".btn-lyrics");
     const playButton = $(".btn-toggle-play");
     const player = $(".player"); // xử lý khi nhấn play thành pause và ngược lại
     const audio = $("#audio");
@@ -153,7 +209,29 @@ const app = {
     const prevBtn = $(".btn-prev");
     const randomBtn = $(".btn-random");
     const repeatBtn = $(".btn-repeat");
+    const muteBtn = $(".volume-off");
+    const maxVolumeBtn = $(".volume-high");
     const _this = this;
+
+    // Show toast
+    bookMarkBtn.onclick = function () {
+      _this.toast({
+        title: "Bookmarked (Update Soon)",
+        message: "Added to your",
+        type: "bookmark",
+        storageView: "Liked Songs",
+        duration: 5000,
+      });
+    };
+    lyricBtn.onclick = function () {
+      _this.toast({
+        title: "Lyrics (Update Soon)",
+        message: "Opened lyric view",
+        type: "lyrics",
+        storageView: titleSong.textContent,
+        duration: 5000,
+      });
+    };
 
     // Cách 1 :
     playButton.onclick = function () {
@@ -288,7 +366,17 @@ const app = {
     rangeVolume.oninput = function (e) {
       // console.log(e.target.value/100);
       const currentVolume = e.target.value / 100;
+      // console.log(e.target.value);
       audio.volume = currentVolume;
+    };
+    muteBtn.onclick = function () {
+      audio.muted = !audio.muted;
+      rangeVolume.value = 0;
+    };
+    maxVolumeBtn.onclick = function () {
+      audio.play();
+      audio.volume = 1.0;
+      rangeVolume.value = 100;
     };
   },
   // Scroll active song into view

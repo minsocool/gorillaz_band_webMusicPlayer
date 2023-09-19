@@ -7,7 +7,7 @@
     <link rel="icon"
         href="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/4-gorillaz-band-special-design-logo-birch-twigley.jpg"
         type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Gorillaz Album Play</title>
 
@@ -18,12 +18,61 @@
         <!-- Dashboard -->
         <div class="dashboard">
             <header>
-                <h4>
-                    Now Playing
-                </h4>
-                <h2>
-                    Feel Good Inc.
-                </h2>
+                <div class="currentSong">
+                    <h4>
+                        Now Playing
+                    </h4>
+                    <h2>
+                        Feel Good Inc.
+                    </h2>
+                </div>
+                <div id="toast">
+                    <!-- Toast Message(Bookmarked) -->
+                    <!-- <div class="toast toast--bookmark">
+                        <div class="toast__icon">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </div>
+                        <div class="toast_body">
+                            <h3 class="toast_title">
+                                Bookmarked
+                            </h3>
+                            <p class="toast_msg">Added to your <a style="color:white; font-weight: 700;">
+                                    Liked Songs
+                                </a>
+                            </p>
+                        </div>
+                        <div class="toast__close">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </div> -->
+                </div>
+
+
+                <!-- Toast Message(Lyrics)
+                    <div class="toast toast--lyrics">
+                        <div class="toast__icon">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <div class="toast_body">
+                            <h3 class="toast_title">
+                                Lyrics
+                            </h3>
+                            <p class="toast_msg">Opened lyric view</p>
+                        </div>
+                        <div class="toast__close">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </div> -->
+
+                <div class="other-features">
+                    <div class="btn btn-bookmark">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                    <div class="btn btn-lyrics">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+
+                </div>
             </header>
 
             <!-- CD -->
@@ -58,11 +107,11 @@
                     <div class="timeEnd">End</div>
                 </div>
                 <div class="edit-volume">
-                    <div class="volume-off">
+                    <div class="btn volume-off">
                         <i class="fas fa-volume-off"></i>
                     </div>
                     <input type="range" class="range-volume" name="range" value="70" step="1" min="0" max="100">
-                    <div class="volume-high">
+                    <div class="btn volume-high">
                         <i class="fas fa-volume-up"></i>
                     </div>
                 </div>
@@ -84,16 +133,32 @@
                     </div>
                 </div> -->
             </div>
-            <div class="footer">
-                <h1>
-                    Edited by
-                    <a target="_blank" href="https://github.com/minsocool">Hoang Minh</a>
-                </h1>
+            <div id="footer">
+                <div class="footer_text">
+                    <h1>
+                        Edited by <a>
+                            Hoang Minh
+                        </a>
+                    </h1>
+                </div>
+
+                <div class="footer__icon">
+                    <a target="_blank" href="https://github.com/minsocool">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/hoangminhdev1999/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                </div>
+
 
             </div>
 
         </div>
 </body>
-<script src="./main.js"></script>
+<script src="./main.js">
+
+</script>
 
 </html>

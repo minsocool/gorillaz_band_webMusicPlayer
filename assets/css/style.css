@@ -62,8 +62,14 @@ html {
 
 /* HEADER */
 header {
-    text-align: center;
+    display: flex;
     margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+header .currentSong {
+    text-align: center;
 }
 
 header h4 {
@@ -74,6 +80,135 @@ header h4 {
 header h2 {
     color: var(--text-color);
     font-size: 30px;
+}
+
+.other-features {
+    display: flex;
+    flex-direction: 'row';
+    position: absolute;
+    right: 20px;
+    color: var(--text-color);
+    gap: 1.5em;
+    font-size: 24px;
+    font-weight: 900;
+    opacity: 0.9;
+}
+
+.other-features .btn {
+    transition: transform .1s;
+}
+
+.other-features .btn:hover {
+    -ms-transform: scale(1.5);
+    /* IE 9 */
+    -webkit-transform: scale(1.5);
+    /* Safari 3-8 */
+    transform: scale(1.5);
+    color: var(--text-color);
+    opacity: 1;
+}
+
+#toast {
+    position: fixed;
+    top: 32px;
+    right: 0;
+    z-index: 2;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #2E77D0;
+    border-radius: 3px;
+    padding: 20px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 6px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.7s;
+    /* transform: translateX(calc(100% + 32px)); */
+    /* animation: slideInLeft ease 0.7s, fadeOut linear 1s 3s forwards; */
+}
+
+
+/* Ease in view */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        /* Position begin start: Right side */
+        transform: translateX(calc(100% + 16px))
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+/* Timeout fadeout */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+
+.toast+.toast {
+    margin-top: 20px;
+}
+
+.toast__icon {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.toast__icon,
+.toast__close {
+    padding: 0 16px;
+}
+
+.toast_body {
+    flex-grow: 1;
+}
+
+.toast_title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.toast_msg {
+    font-size: 15px;
+    color: var(--primary-color);
+    margin-top: 5px;
+    line-height: 1.6;
+}
+
+.toast__close {
+    font-size: 20px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.toast__close:hover {
+    opacity: 0.7;
+}
+
+
+.toast--bookmark {
+    border-color: var(--playing-color)
+}
+
+.toast--bookmark .toast__icon {
+    color: var(--tertiary-color)
+}
+
+.toast--lyrics {
+    border-color: var(--playing-color)
+}
+
+.toast--lyrics .toast__icon {
+    color: var(--tertiary-color)
 }
 
 /* CD */
@@ -107,6 +242,15 @@ header h2 {
     padding: 18px;
     font-size: 24px;
     cursor: pointer;
+    transition: transform .1s;
+}
+
+.control .btn:hover {
+    -ms-transform: scale(1.5);
+    /* IE 9 */
+    -webkit-transform: scale(1.5);
+    /* Safari 3-8 */
+    transform: scale(1.5);
 }
 
 .control .btn.active {
@@ -267,12 +411,28 @@ header h2 {
     font-size: 18px;
 }
 
-
-.footer h1 {
-    color: var(--text-color);
-    text-align: center;
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.footer h1 a {
+#footer h1 {
+    color: var(--text-color);
+}
+
+#footer h1 a {
     color: var(--playing-color);
+}
+
+#footer .footer__icon {
+    margin-top: 20px;
+}
+
+#footer .footer__icon a {
+    font-size: 40px;
+    padding: 20px 16px;
+    text-decoration: none;
+    color: var(--tertiary-color);
 }
